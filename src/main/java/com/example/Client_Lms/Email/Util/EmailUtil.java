@@ -51,7 +51,7 @@ public class EmailUtil {
 //	        mn.setFrom("purnapuri14@gmail.com", "Admin");
 		mn.setFrom("purnapuri14@gmail.com", "Admin");
 //	        mn.setTo("sricharan824@gmail.com");
-		mn.setTo("prashanthkulkarani066@gmail.com");
+		mn.setTo("Jai.aluri555@gmail.com");
 		mn.setSubject("Daily Employee Enrollment Report - " + LocalDate.now());
 
 		String body = createEmailBody(employees);
