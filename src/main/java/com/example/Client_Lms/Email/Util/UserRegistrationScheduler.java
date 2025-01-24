@@ -42,13 +42,13 @@ public class UserRegistrationScheduler {
 //	--------------------------------------------------------------------------------------------
 	
 //	                   se  mi hou
-	@Scheduled(cron = "0 20 10 * * *")
+	@Scheduled(cron = "0 20 23 * * *")
     public void scheduleRegisteredStudentsTOadmin() throws Exception {
         employeeImpl.getEmployeesByDatetoSendAdmin();
     }
 	
 	
-	@Scheduled(cron = "0 20 10 * * *")
+	@Scheduled(cron = "0 20 23 * * *")
 	public void scduleDailtTransactionTOAdmin() throws Exception {
 		trp.getTrasactionByDate();
 	}
