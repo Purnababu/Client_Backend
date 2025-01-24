@@ -12,11 +12,9 @@ public class UserRegistrationScheduler {
 
 	@Autowired
 	private EmployeeImpl employeeImpl;
-	
+
 	@Autowired
 	private TransactionServiceImpl trp;
-	
-	
 
 //    @Scheduled(cron = "0 02 14 * * *")
 // 2 PM
@@ -38,21 +36,18 @@ public class UserRegistrationScheduler {
 		employeeImpl.updateLoginStatusForAllEmployees();
 	}
 
-	
 //	--------------------------------------------------------------------------------------------
-	
+
 //	                   se  mi hou
+
 	@Scheduled(cron = "0 41 23 * * *")
-    public void scheduleRegisteredStudentsTOadmin() throws Exception {
-        employeeImpl.getEmployeesByDatetoSendAdmin();
-    }
-	
-	
+	public void scheduleRegisteredStudentsTOadmin() throws Exception {
+		employeeImpl.getEmployeesByDatetoSendAdmin();
+	}
+
 	@Scheduled(cron = "0 41 23 * * *")
 	public void scduleDailtTransactionTOAdmin() throws Exception {
 		trp.getTrasactionByDate();
 	}
-	
-	
-	
+
 }
