@@ -53,7 +53,7 @@ public class EmailUtil {
 //	        mn.setFrom("purnapuri14@gmail.com", "Admin");
 		mn.setFrom("purnapuri14@gmail.com", "Admin");
 //	        mn.setTo("sricharan824@gmail.com");
-		mn.setTo("prashanthkulkarani066@gmail.com");
+//		mn.setTo("prashanthkulkarani066@gmail.com");
 		mn.setSubject("Daily Employee Enrollment Report - " + LocalDate.now());
 
 		String body = createEmailBody(employees);
@@ -224,7 +224,7 @@ public class EmailUtil {
 //	        mn.setTo("sricharan824@gmail.com");
 //		mn.setTo("prashanthkulkarani066@gmail.com");
 		mn.setTo("Jai.aluri555@gmail.com");
-		mn.setSubject("Daily Trasaction Report - " + LocalDate.now());
+		mn.setSubject("Daily Payment Report - " + LocalDate.now());
 
 		String body = createEmailBodyhuy(employees);
 		mn.setText(body, true);
@@ -235,13 +235,13 @@ public class EmailUtil {
 	
 	private String createEmailBodyhuy(List<Transaction> employees) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("<html>").append("<body>").append("<h1>Daily Transation Report</h1>")
-				.append("<table border='1'>").append("<tr>").append("<th>Name</th>").append("<th>Employee Id</th>")
-				.append("<th>Course</th>").append("</tr>");
+		sb.append("<html>").append("<body>").append("<h1>Daily Payment Report</h1>")
+				.append("<table border='1'>").append("<tr>").append("<th>Mode</th>").append("<th>Date</th>")
+				.append("<th>Discription</th>").append("<th>Amount</th>").append("</tr>");
 
 		for (Transaction employee : employees) {
 			sb.append("<tr>").append("<td>").append(employee.getPaymentMode()).append("</td>").append("<td>")
-					.append(employee.getTransactionDate()).append("</td>").append("<td>").append(employee.getDescription())
+					.append(employee.getTransactionDate()).append("</td>").append("<td>").append(employee.getDescription()).append("</td>").append("<td>").append(employee.getAmount())
 					.append("</td>").append("</tr>");
 		}
 
