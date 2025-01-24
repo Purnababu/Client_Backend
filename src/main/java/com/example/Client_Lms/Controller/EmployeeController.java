@@ -18,7 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.Client_Lms.Entity.Employee;
+import com.example.Client_Lms.Entity.StudentEnrollment;
+import com.example.Client_Lms.Entity.Transaction;
 import com.example.Client_Lms.Service.EmployeeService;
+import com.example.Client_Lms.Service.TransactionService;
 
 import jakarta.annotation.PostConstruct;
 
@@ -28,6 +31,11 @@ public class EmployeeController {
 
 	@Autowired
 	private EmployeeService employeeService;
+	
+	 @Autowired
+	    private TransactionService transactionService;
+	
+	
 
 	@PostConstruct
 	public void initRoleAndAdmin() {
@@ -64,17 +72,6 @@ public class EmployeeController {
 		List<Employee> allemployes = employeeService.gellAllEmployess();
 		return new ResponseEntity<List<Employee>>(allemployes, HttpStatus.OK);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	@PostMapping("/upload/{email}")
 	public ResponseEntity<?> uploadImage(@PathVariable String email, @RequestParam("file") MultipartFile file) {
@@ -109,4 +106,31 @@ public class EmployeeController {
 		}
 	}
 
+//	------------------------------------------------------------------------------------------------------------
+
+	@PreAuthorize("hasRole('Admin')")
+	@PostMapping("/register")
+	public StudentEnrollment registerStudent(@RequestBody StudentEnrollment student) throws Exception {
+		return employeeService.registerStudent(student);
+	}
+
+	
+	@GetMapping("/getEmployeeeeesByDate")
+	@PreAuthorize("hasRole('Admin')")
+	public ResponseEntity<List<StudentEnrollment>> getStudentsByDate() throws Exception {
+		List<StudentEnrollment> employeesByDate = employeeService.getEmployeesByDatetoSendAdmin();
+		return new ResponseEntity<List<StudentEnrollment>>(employeesByDate, HttpStatus.OK);
+	}
+	
+	
+	 // Endpoint to create or update a transaction
+    @PostMapping("/addTrasaction")
+    @PreAuthorize("hasRole('Admin')")
+    public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction) {
+        Transaction savedTransaction = transactionService.saveTransaction(transaction);
+        return new ResponseEntity<>(savedTransaction, HttpStatus.CREATED);
+    }
+	
+	
+	
 }

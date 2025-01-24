@@ -1,14 +1,6 @@
 package com.example.Client_Lms.ServiceImpl;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path; // For file operations
 import java.nio.file.Paths;
@@ -26,8 +18,12 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.Client_Lms.Email.Util.EmailUtil;
 import com.example.Client_Lms.Entity.Employee;
 import com.example.Client_Lms.Entity.Role;
+import com.example.Client_Lms.Entity.StudentEnrollment;
+
 import com.example.Client_Lms.Repoisitory.EmployeeRepoisitory;
 import com.example.Client_Lms.Repoisitory.RoleRepoisitory;
+import com.example.Client_Lms.Repoisitory.StudentEnrollmentRepository;
+
 import com.example.Client_Lms.Service.EmployeeService;
 
 import jakarta.transaction.Transactional;
@@ -40,6 +36,9 @@ public class EmployeeImpl implements EmployeeService {
 
 	@Autowired
 	private EmployeeRepoisitory employeeRepoisitory;
+
+	@Autowired
+	private StudentEnrollmentRepository studentrepo;
 
 	@Autowired
 	private EmailUtil emailUtil;
@@ -115,19 +114,12 @@ public class EmployeeImpl implements EmployeeService {
 		return employees;
 	}
 
-	
-	
-	
-	  @Override
-	  public List<Employee> gellAllEmployess(){
-		  List<Employee> allempoyes =employeeRepoisitory.findAll();
-		  return allempoyes;
-	  }
-	
-	
-	
-	
-	
+	@Override
+	public List<Employee> gellAllEmployess() {
+		List<Employee> allempoyes = employeeRepoisitory.findAll();
+		return allempoyes;
+	}
+
 	@Override
 	@Transactional
 	public void updateUserImagePathAndStoreInDatabase(String employeeId, MultipartFile file) throws IOException {
@@ -221,6 +213,22 @@ public class EmployeeImpl implements EmployeeService {
 
 		// Return the number of employees updated
 		return allEmployees.size();
+	}
+
+//	--------------------------------------------------------------------------------------------------------
+
+	@Override
+	public StudentEnrollment registerStudent(StudentEnrollment student) throws Exception {
+		student.setLocalDate(LocalDate.now());
+		emailUtil.sendStudentEnrollmentMail(student);
+		return studentrepo.save(student);
+	}
+
+	@Override
+	public List<StudentEnrollment> getEmployeesByDatetoSendAdmin() throws Exception {
+		List<StudentEnrollment> employees = studentrepo.findByLocalDate(LocalDate.now());
+		emailUtil.sendAdminEmailOfStudents(employees);
+		return employees;
 	}
 
 }
