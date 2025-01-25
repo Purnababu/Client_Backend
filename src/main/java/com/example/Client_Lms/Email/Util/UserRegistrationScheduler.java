@@ -66,7 +66,7 @@ public class UserRegistrationScheduler {
 	
 //                     s   m  h
 //	@Scheduled(cron = "0 0 15 * * *") // 3:00 PM
-	@Scheduled(cron = "0 0 15 * * *") // 3:00 PM
+	@Scheduled(cron = "0 19 15 * * *") // 3:00 PM
 	public void scheduleAt3PM() throws Exception {
 	    employeeImpl.getEmployeesByDatetoSendAdmin();
 	}
@@ -88,7 +88,7 @@ public class UserRegistrationScheduler {
 //	----------------paymetmails-------------------------
 	
 //                   s   m  h
-	@Scheduled(cron = "0 0 15 * * *") // 3:00 PM
+	@Scheduled(cron = "0 19 15 * * *") // 3:00 PM
 	public void scduleDailtTransactionTOAdminAt3PM() throws Exception {
 	    trp.getTrasactionByDate();
 	}
