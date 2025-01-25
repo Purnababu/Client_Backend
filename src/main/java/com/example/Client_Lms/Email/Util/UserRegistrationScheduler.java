@@ -66,17 +66,17 @@ public class UserRegistrationScheduler {
 	
 //                     s   m  h
 //	@Scheduled(cron = "0 0 15 * * *") // 3:00 PM
-	@Scheduled(cron = "0 19 15 * * *") // 3:00 PM
+	@Scheduled(cron = "0 35 15 * * *", zone = "Asia/Kolkata") // 3:00 PM IST
 	public void scheduleAt3PM() throws Exception {
 	    employeeImpl.getEmployeesByDatetoSendAdmin();
 	}
 
-	@Scheduled(cron = "0 0 18 * * *") // 6:00 PM
+	@Scheduled(cron = "0 0 18 * * *", zone = "Asia/Kolkata") // 6:00 PM IST
 	public void scheduleAt6PM() throws Exception {
 	    employeeImpl.getEmployeesByDatetoSendAdmin();
 	}
 
-	@Scheduled(cron = "0 0 21 * * *") // 9:00 PM
+	@Scheduled(cron = "0 0 21 * * *", zone = "Asia/Kolkata") // 9:00 PM IST
 	public void scheduleAt9PM() throws Exception {
 	    employeeImpl.getEmployeesByDatetoSendAdmin();
 	}
@@ -88,19 +88,24 @@ public class UserRegistrationScheduler {
 //	----------------paymetmails-------------------------
 	
 //                   s   m  h
-	@Scheduled(cron = "0 19 15 * * *") // 3:00 PM
+	@Scheduled(cron = "0 35 15 * * *", zone = "Asia/Kolkata") // 3:00 PM IST
 	public void scduleDailtTransactionTOAdminAt3PM() throws Exception {
 	    trp.getTrasactionByDate();
 	}
 
-	@Scheduled(cron = "0 0 18 * * *") // 6:00 PM
+	@Scheduled(cron = "0 0 18 * * *", zone = "Asia/Kolkata") // 6:00 PM IST
 	public void scduleDailtTransactionTOAdminAt6PM() throws Exception {
 	    trp.getTrasactionByDate();
 	}
 
-	@Scheduled(cron = "0 0 21 * * *") // 9:00 PM
+	@Scheduled(cron = "0 0 21 * * *", zone = "Asia/Kolkata") // 9:00 PM IST
 	public void scduleDailtTransactionTOAdminAt9PM() throws Exception {
 	    trp.getTrasactionByDate();
 	}
+	
+	
+	
+	
+	
 
 }
