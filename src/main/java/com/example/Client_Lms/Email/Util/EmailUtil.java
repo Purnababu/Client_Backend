@@ -131,6 +131,7 @@ public class EmailUtil {
 	
 	
 //	----------------------------------------------------------------------------------------------------------------
+	
 	public void sendStudentEnrollmentMail(StudentEnrollment studentEnrollment) throws Exception {
 	    MimeMessage mimeMessage = javaMailSender.createMimeMessage();
 	    MimeMessageHelper mn = new MimeMessageHelper(mimeMessage);
@@ -183,9 +184,9 @@ public class EmailUtil {
 //	        mn.setFrom("purnapuri14@gmail.com", "Admin");
 		mn.setFrom("purnapuri14@gmail.com", "Admin");
 //	        mn.setTo("sricharan824@gmail.com");
-//		mn.setTo("prashanthkulkarani066@gmail.com");
+		mn.setTo("prashanthkulkarani066@gmail.com");
 //		mn.setTo("anushamantripragada41@gmail.com");
-		mn.setTo("Jai.aluri555@gmail.com");
+//		mn.setTo("Jai.aluri555@gmail.com");
 		mn.setSubject("Daily Students Enrollment Report - " + LocalDate.now());
 
 		String body = createEmailBodyyy(employees);
@@ -222,8 +223,8 @@ public class EmailUtil {
 //	        mn.setFrom("purnapuri14@gmail.com", "Admin");
 		mn.setFrom("purnapuri14@gmail.com", "Admin");
 //	        mn.setTo("sricharan824@gmail.com");
-//		mn.setTo("prashanthkulkarani066@gmail.com");
-		mn.setTo("Jai.aluri555@gmail.com");
+		mn.setTo("prashanthkulkarani066@gmail.com");
+//		mn.setTo("Jai.aluri555@gmail.com");
 		mn.setSubject("Daily Payment Report - " + LocalDate.now());
 
 		String body = createEmailBodyhuy(employees);

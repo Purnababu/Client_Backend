@@ -19,10 +19,10 @@ public class UserRegistrationScheduler {
 //    @Scheduled(cron = "0 02 14 * * *")
 // 2 PM
 
-	@Scheduled(cron = "0 56 17 * * *")
-	public void scheduleRegisteredUsersEmail() throws Exception {
-		employeeImpl.getEmployeesByDate();
-	}
+//	@Scheduled(cron = "0 56 17 * * *")
+//	public void scheduleRegisteredUsersEmail() throws Exception {
+//		employeeImpl.getEmployeesByDate();
+//	}
 
 //    - 57: Seconds (57)
 //    - 13: Hours (1 PM, 24-hour format)
@@ -37,17 +37,70 @@ public class UserRegistrationScheduler {
 	}
 
 //	--------------------------------------------------------------------------------------------
+//     working id manadi
+	//idi maan main di deeni chek cheyi
+//	Explanation of cron expression:
+//		0 → Executes at second 0
+//		0 → Executes at minute 0
+//		15,18,21 → Runs at 3 PM (15:00), 6 PM (18:00), and 9 PM (21:00)
+//	@Scheduled(cron = "0 0 15,18,21 * * *")
 
-//	                   se  mi hou
 
-	@Scheduled(cron = "0 41 23 * * *")
-	public void scheduleRegisteredStudentsTOadmin() throws Exception {
-		employeeImpl.getEmployeesByDatetoSendAdmin();
+//	@Scheduled(cron = "0 41 23 * * *")
+//	public void scheduleRegisteredStudentsTOadmin() throws Exception {
+//		employeeImpl.getEmployeesByDatetoSendAdmin();
+//	}
+
+//	@Scheduled(cron = "0 41 23 * * *")
+//	public void scduleDailtTransactionTOAdmin() throws Exception {
+//		trp.getTrasactionByDate();
+//	}
+	
+	
+//	-----------------------------------------------------------------------------------------------
+
+
+	
+	
+//	--------------enrollmenmailss--------------
+	
+//                     s   m  h
+//	@Scheduled(cron = "0 0 15 * * *") // 3:00 PM
+	@Scheduled(cron = "0 0 15 * * *") // 3:00 PM
+	public void scheduleAt3PM() throws Exception {
+	    employeeImpl.getEmployeesByDatetoSendAdmin();
 	}
 
-	@Scheduled(cron = "0 41 23 * * *")
-	public void scduleDailtTransactionTOAdmin() throws Exception {
-		trp.getTrasactionByDate();
+	@Scheduled(cron = "0 0 18 * * *") // 6:00 PM
+	public void scheduleAt6PM() throws Exception {
+	    employeeImpl.getEmployeesByDatetoSendAdmin();
+	}
+
+	@Scheduled(cron = "0 0 21 * * *") // 9:00 PM
+	public void scheduleAt9PM() throws Exception {
+	    employeeImpl.getEmployeesByDatetoSendAdmin();
+	}
+
+	
+	
+	
+	
+//	----------------paymetmails-------------------------
+	
+//                   s   m  h
+	@Scheduled(cron = "0 0 15 * * *") // 3:00 PM
+	public void scduleDailtTransactionTOAdminAt3PM() throws Exception {
+	    trp.getTrasactionByDate();
+	}
+
+	@Scheduled(cron = "0 0 18 * * *") // 6:00 PM
+	public void scduleDailtTransactionTOAdminAt6PM() throws Exception {
+	    trp.getTrasactionByDate();
+	}
+
+	@Scheduled(cron = "0 0 21 * * *") // 9:00 PM
+	public void scduleDailtTransactionTOAdminAt9PM() throws Exception {
+	    trp.getTrasactionByDate();
 	}
 
 }
