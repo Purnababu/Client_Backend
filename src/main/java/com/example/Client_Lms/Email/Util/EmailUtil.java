@@ -252,8 +252,52 @@ public class EmailUtil {
 	}
 	
 
+//-----------------------------------------------------------------------------------------------
+	
+	
+	
+	public void sendTrasactionEmailForMonthTOAdmin(List<Transaction> transactions, double totalAmount) throws Exception {
+	    MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+	    MimeMessageHelper mn = new MimeMessageHelper(mimeMessage);
+
+	    mn.setFrom("purnapuri14@gmail.com", "Admin");
+	    mn.setTo("Jai.aluri555@gmail.com");
+//	    mn.setTo("anushamantripragada41@gmail.com");
+	    mn.setSubject("Monthly Payment Report - " + LocalDate.now());
+
+	    // Generate email body with total amount
+	    String body = createEmailBody(transactions, totalAmount);
+	    mn.setText(body, true);
+
+	    javaMailSender.send(mimeMessage);
+	}
+
 
 	
+	private String createEmailBody(List<Transaction> transactions, double totalAmount) {
+	    StringBuilder sb = new StringBuilder();
+	    sb.append("<html>").append("<body>").append("<h1>Monthly Payment Report</h1>")
+	      .append("<p><b>Total Transaction Amount for this month:</b> ₹").append(totalAmount).append("</p>")
+	      .append("<table border='1'>")
+	      .append("<tr>")
+	      .append("<th>Mode</th>").append("<th>Date</th>")
+	      .append("<th>Description</th>").append("<th>Amount</th>")
+	      .append("</tr>");
+
+	    for (Transaction transaction : transactions) {
+	        sb.append("<tr>")
+	          .append("<td>").append(transaction.getPaymentMode()).append("</td>")
+	          .append("<td>").append(transaction.getTransactionDate()).append("</td>")
+	          .append("<td>").append(transaction.getDescription()).append("</td>")
+	          .append("<td>").append(transaction.getAmount()).append("</td>")
+	          .append("</tr>");
+	    }
+
+	    sb.append("</table>").append("</body>").append("</html>");
+
+	    return sb.toString();
+	}
+
 	
 	
 	

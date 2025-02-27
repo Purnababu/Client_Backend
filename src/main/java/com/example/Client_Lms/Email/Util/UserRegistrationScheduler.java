@@ -107,5 +107,17 @@ public class UserRegistrationScheduler {
 	
 	
 	
+	
+//	------------------------------monthly payment report----------------------------------------------------
+	
+//	                   s m h day      
+	
+//	@Scheduled(cron = "0 0 21 20 * ?", zone = "Asia/Kolkata") // Runs at 9:00 PM IST on the 20t
+	@Scheduled(cron = "0 20 12 12 * ?", zone = "Asia/Kolkata") // Runs at 9:00 PM IST on the 20t
+	public void scduleMonlyTransactiontoadmin() throws Exception {
+	    trp.getTotalAmount();
+	}
+	
+	
 
 }

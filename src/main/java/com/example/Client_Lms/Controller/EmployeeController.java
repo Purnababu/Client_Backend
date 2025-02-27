@@ -2,6 +2,7 @@ package com.example.Client_Lms.Controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -131,6 +132,13 @@ public class EmployeeController {
         return new ResponseEntity<>(savedTransaction, HttpStatus.CREATED);
     }
 	
+    
+    
+    @GetMapping("/total")
+    public Map<String, Double> getTotalAmount() throws Exception {
+        double totalAmount = transactionService.getTotalAmount();
+        return Map.of("totalAmount", totalAmount);
+    }
 	
 	
 }

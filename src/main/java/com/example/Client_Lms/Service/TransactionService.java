@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.Client_Lms.Entity.Employee;
 import com.example.Client_Lms.Entity.Transaction;
+import java.time.LocalDate;
 
 public interface TransactionService {
 
@@ -11,4 +12,13 @@ public interface TransactionService {
 	Transaction saveTransaction(Transaction transaction);
 
 	public List<Transaction> getTrasactionByDate() throws Exception;
+	
+	
+	 
+//	-------------------------------------------------------------------------------------------------
+	
+	 double getTotalAmount() throws Exception;
+	
+	  
+
 }
